@@ -10,7 +10,7 @@ on:
 
 jobs:
   setup:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
 
     steps:
     - name: Check out repository
@@ -28,24 +28,17 @@ jobs:
         pip install robotframework-seleniumlibrary
         pip install pytest
         pip install pytest-xdist
+        robot --version  # Verificar se o robotframework está instalado corretamente
 
-    - name: Add Python and Scripts to PATH
-      shell: pwsh
+    - name: Install ChromeDriver
       run: |
-        $env:PATH = "C:\Program Files\Python39\Scripts;C:\Program Files\Python39;$env:PATH"
-        Write-Host "Python and Scripts directories added to PATH"
-    
-    - name: Set up ChromeDriver
-      run: |
-        choco install chromedriver -y
-
-    - name: Add chromedriver to PATH
-      run: |
-        setx PATH "$env:PATH;C:\ProgramData\chocolatey\bin"
+        sudo apt-get update
+        sudo apt-get install -y chromium-chromedriver
+        sudo ln -s /usr/lib/chromium-browser/chromedriver /usr/bin
 
   run_tests:
     needs: setup
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
 
     steps:
     - name: Check out repository
@@ -60,7 +53,7 @@ jobs:
 
   upload_results:
     needs: run_tests
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
 
     steps:
     - name: Upload Robot Framework Results
@@ -71,11 +64,11 @@ jobs:
 
   upload_logs:
     needs: run_tests
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
 
     steps:
     - name: Upload Selenium Logs
       uses: actions/upload-artifact@v3
       with:
         name: selenium-logs
-        path: C:\selenium_logs\
+        path: /tmp/selenium_logs/
