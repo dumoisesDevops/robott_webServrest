@@ -43,7 +43,7 @@ jobs:
 
       - name: List files for debugging
         run: |
-          dir /s  # Verifica a estrutura do repositório para garantir que 'tests/features' existe
+          Get-ChildItem -Recurse  # Usa Get-ChildItem no lugar de dir para listar os arquivos no repositório
 
       - name: Run Robot Framework Tests
         run: |
