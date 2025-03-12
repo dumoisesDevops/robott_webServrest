@@ -1,55 +1,60 @@
-name: Robot Framework Tests
+name: Run Robot Framework Tests with Selenium and Chrome
 
 on:
   push:
     branches:
       - main
   pull_request:
+    branches:
+      - main
 
 jobs:
-  test:
+  run-tests:
     runs-on: ubuntu-latest
 
     steps:
-      - name: 📥 Checkout do código
-        uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v2
 
-      - name: 📂 Listar arquivos no workspace (debug)
-        run: ls -R
-
-      - name: 📌 Confirmar diretório atual
-        run: pwd
-
-      - name: 📌 Instalar Python e dependências
-        uses: actions/setup-python@v4
+      - name: Set up Python 3.x
+        uses: actions/setup-python@v2
         with:
           python-version: '3.10'
 
-      - name: 📦 Instalar dependências do Robot Framework
+      - name: Install dependencies
         run: |
+          python -m pip install --upgrade pip
           pip install robotframework
           pip install robotframework-seleniumlibrary
-          pip install robotframework-faker
-          pip install selenium
+          pip install faker
 
-      - name: 🖥️ Instalar Google Chrome e ChromeDriver
+      - name: Install Google Chrome and ChromeDriver
         run: |
           sudo apt update
           sudo apt install -y google-chrome-stable
           CHROME_VERSION=$(google-chrome --version | awk '{print $3}')
           CHROMEDRIVER_VERSION=$(curl -s "https://chromedriver.storage.googleapis.com/LATEST_RELEASE_$CHROME_VERSION")
+          echo "Chrome Version: $CHROME_VERSION"
+          echo "Chromedriver Version: $CHROMEDRIVER_VERSION"
+          
+          # Baixar e extrair o Chromedriver
           wget -q "https://chromedriver.storage.googleapis.com/$CHROMEDRIVER_VERSION/chromedriver_linux64.zip"
-          unzip chromedriver_linux64.zip
+          unzip -o chromedriver_linux64.zip
+          ls -lh  # Verifica se o chromedriver foi extraído corretamente
+          
+          # Mover o chromedriver para o diretório correto
           sudo mv chromedriver /usr/local/bin/
+          chmod +x /usr/local/bin/chromedriver  # Garantir permissões corretas
+
+          # Verificar a instalação
           chromedriver --version
 
-      - name: 🚀 Executar testes com Robot Framework
+      - name: Run Robot Framework Tests
         run: |
-          cd projeto-automacao/tests && robot --outputdir results features/
-
-      - name: 📤 Upload dos resultados
-        if: always()
-        uses: actions/upload-artifact@v4
+          robot --outputdir results features/
+          
+      - name: Upload results
+        uses: actions/upload-artifact@v2
         with:
-          name: relatorios_robot
-          path: projeto-automacao/tests/results/
+          name: robot-results
+          path: results
