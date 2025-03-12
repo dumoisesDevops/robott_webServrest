@@ -33,21 +33,13 @@ jobs:
         run: |
           pip show selenium  # Verifica se o Selenium está instalado
 
-      - name: Install Google Chrome
-        run: |
-          choco install googlechrome -y  # Instalando o Google Chrome com o Chocolatey
-
-      - name: Install ChromeDriver
-        run: |
-          choco install chromedriver -y  # Instalando o ChromeDriver com o Chocolatey
-
       - name: Check Google Chrome version
         run: |
-          "C:\Program Files\Google\Chrome\Application\chrome.exe" --version  # Usando o caminho completo para o Chrome
+          "C:\Program Files\Google\Chrome\Application\chrome.exe" --version  # Verifica a versão do Chrome instalado
 
       - name: Check ChromeDriver version
         run: |
-          chromedriver --version
+          chromedriver --version  # Verifica a versão do ChromeDriver instalado
 
       - name: List files for debugging
         run: |
