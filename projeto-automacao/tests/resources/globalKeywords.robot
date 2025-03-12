@@ -1,22 +1,17 @@
 *** Settings ***
-
 Resource          ./base.robot
 
 *** Variables ***
 ${BROWSER}        Chrome
-${HEADLESS_MODE}  ${EMPTY}
-${TIMEOUT}        3000s
+${HEADLESS_MODE}  --headless
+${TIMEOUT}        60s
 ${OUTPUT_DIR}     evidencias/videos
 ${URL}            https://front.serverest.dev/login
 
 *** Keywords ***
 ### DADO
 Dado que estou na página inicial
-    TRY
-         Open Browser    ${URL}    ${BROWSER}  
-    EXCEPT
-        Log To Console   elemento não localizado
-    END
+    Run Keyword And Ignore Error    Open Browser    ${URL}    ${BROWSER}    ${HEADLESS_MODE}
 
 ### QUANDO
 
@@ -38,6 +33,7 @@ Inserir texto
 
 Verificar se o texto está visível
     [Arguments]    ${TEXTO}
+    ${ELEMENTO}    Get Text    ${TEXTO}
     Wait Until Element Contains    ${ELEMENTO}    ${TEXTO}    ${TIMEOUT}
 
 Verificar se o texto não está visível
@@ -45,7 +41,7 @@ Verificar se o texto não está visível
     Wait Until Element Does Not Contain    ${ELEMENTO}    ${TEXTO}    ${TIMEOUT}
 
 Verificar se o elemento está visível
-    [Arguments]    ${ELEMENTO}    ${TIMEOUT}=190s
+    [Arguments]    ${ELEMENTO}    ${TIMEOUT}=60s
     Wait Until Element Is Visible    ${ELEMENTO}    ${TIMEOUT}
 
 Verificar se o elemento está desabilitado
@@ -61,8 +57,7 @@ Limpar campo de texto
     Wait Until Element Is Visible    ${ELEMENTO}    ${TIMEOUT}
     Clear Element Text    ${ELEMENTO}
 
-
 Clicar se o botão está visível
-    [Arguments]              ${ELEMENTO}
-    ${BOTAO_VISIVEL}         Run Keyword And Return Status    Wait Until Element Is Visible    ${ELEMENTO}    timeout=10
-    Run Keyword If           ${BOTAO_VISIVEL}                 Clicar no botão            ${ELEMENTO}
+    [Arguments]    ${ELEMENTO}
+    ${BOTAO_VISIVEL}    Run Keyword And Return Status    Wait Until Element Is Visible    ${ELEMENTO}    timeout=10
+    Run Keyword If    ${BOTAO_VISIVEL}    Clicar no botão    ${ELEMENTO}

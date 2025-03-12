@@ -1,32 +1,278 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 7.2.2 (Python 3.12.1 on win32)" generated="2025-03-12T09:26:09.044058" rpa="false" schemaversion="5">
-<suite id="s1" name="Test Suite" source="c:\Users\User\Desktop\ProjetosEstudos\Robot_Servrest_web\projeto-automacao\tests\test_suite.robot">
-<test id="s1-t1" name="Rodar todos os testes" line="6">
-<kw name="Run Tests">
-<msg time="2025-03-12T09:26:09.075992" level="FAIL">No keyword with name 'Run Tests' found.</msg>
-<arg>features/cadastro.robot</arg>
-<status status="FAIL" start="2025-03-12T09:26:09.074992" elapsed="0.001999">No keyword with name 'Run Tests' found.</status>
+<robot generator="Robot 7.2.2 (Python 3.12.1 on win32)" generated="2025-03-12T11:17:38.452249" rpa="false" schemaversion="5">
+<suite id="s1" name="Login" source="c:\Users\User\Desktop\ProjetosEstudos\Robot_Servrest_web\projeto-automacao\tests\features\login.robot">
+<test id="s1-t1" name="CT-01 - Validar login com usuario valido" line="7">
+<kw name="Dado que estou na página inicial" owner="globalKeywords">
+<kw name="Run Keyword And Ignore Error" owner="BuiltIn">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2025-03-12T11:17:39.103218" level="INFO">Opening browser 'Chrome' to base url 'https://front.serverest.dev/login'.</msg>
+<arg>${URL}</arg>
+<arg>${BROWSER}</arg>
+<arg>${HEADLESS_MODE}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2025-03-12T11:17:39.103218" elapsed="4.931712"/>
 </kw>
-<kw name="Run Tests">
-<arg>features/login.robot</arg>
-<status status="NOT RUN" start="2025-03-12T09:26:09.076991" elapsed="0.000000"/>
+<arg>Open Browser</arg>
+<arg>${URL}</arg>
+<arg>${BROWSER}</arg>
+<arg>${HEADLESS_MODE}</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<status status="PASS" start="2025-03-12T11:17:39.103218" elapsed="4.931712"/>
 </kw>
-<status status="FAIL" start="2025-03-12T09:26:09.073991" elapsed="0.003999">No keyword with name 'Run Tests' found.</status>
+<status status="PASS" start="2025-03-12T11:17:39.102186" elapsed="4.932744"/>
+</kw>
+<kw name="Quando informo os dados de acesso" owner="login">
+<kw name="Obter Dados Login" owner="obter_usuario">
+<msg time="2025-03-12T11:17:44.036966" level="INFO">${usuario} = kylecampbell@example.org</msg>
+<msg time="2025-03-12T11:17:44.037961" level="INFO">${senha} = ph!0uBFhXQ%R</msg>
+<var>${usuario}</var>
+<var>${senha}</var>
+<doc>Lê o arquivo JSON e retorna o primeiro usuário como dados de login.</doc>
+<status status="PASS" start="2025-03-12T11:17:44.035962" elapsed="0.001999"/>
+</kw>
+<kw name="Inserir texto" owner="globalKeywords">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${ELEMENTO}</arg>
+<arg>${TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-03-12T11:17:44.038964" elapsed="0.023559"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-03-12T11:17:44.064031" level="INFO">Typing text 'kylecampbell@example.org' into text field 'id=email'.</msg>
+<arg>${ELEMENTO}</arg>
+<arg>${TEXTO}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-03-12T11:17:44.063523" elapsed="0.228442"/>
+</kw>
+<arg>${INPUT_LOGIN}</arg>
+<arg>${usuario}</arg>
+<status status="PASS" start="2025-03-12T11:17:44.037961" elapsed="0.254004"/>
+</kw>
+<kw name="Inserir texto" owner="globalKeywords">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${ELEMENTO}</arg>
+<arg>${TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-03-12T11:17:44.291965" elapsed="0.016537"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-03-12T11:17:44.309501" level="INFO">Typing text 'ph!0uBFhXQ%R' into text field 'id=password'.</msg>
+<arg>${ELEMENTO}</arg>
+<arg>${TEXTO}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-03-12T11:17:44.309501" elapsed="0.059299"/>
+</kw>
+<arg>${INPUT_PASSWORD}</arg>
+<arg>${senha}</arg>
+<status status="PASS" start="2025-03-12T11:17:44.291965" elapsed="0.077834"/>
+</kw>
+<kw name="Clicar no botão" owner="globalKeywords">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${ELEMENTO}</arg>
+<arg>${TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-03-12T11:17:44.369799" elapsed="0.014019"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-03-12T11:17:44.383818" level="INFO">Clicking element 'xpath=//button[normalize-space(text())='Entrar']'.</msg>
+<arg>${ELEMENTO}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-03-12T11:17:44.383818" elapsed="0.042572"/>
+</kw>
+<arg>${BOTAO_ENTRAR_LOGIN}</arg>
+<status status="PASS" start="2025-03-12T11:17:44.369799" elapsed="0.056591"/>
+</kw>
+<status status="PASS" start="2025-03-12T11:17:44.035962" elapsed="0.390428"/>
+</kw>
+<kw name="Então usuario e logado com sucesso" owner="login">
+<kw name="Wait Until Location Is" owner="SeleniumLibrary">
+<msg time="2025-03-12T11:17:52.073328" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: Message: invalid session id: session deleted as the browser has closed the connection
+from disconnected: not connected to DevTools
+  (Session info: chrome=134.0.6998.36)
+Stacktrace:
+	GetHandleVerifier [0x00007FF789FDFE45+26629]
+	(No symbol) [0x00007FF789F46010]
+	(No symbol) [0x00007FF789DD931A]
+	(No symbol) [0x00007FF789DC4F65]
+	(No symbol) [0x00007FF789DE9E04]
+	(No symbol) [0x00007FF789E5F85F]
+	(No symbol) [0x00007FF789E7FA55]
+	(No symbol) [0x00007FF789E57883]
+	(No symbol) [0x00007FF789E20550]
+	(No symbol) [0x00007FF789E21803]
+	GetHandleVerifier [0x00007FF78A3372BD+3529853]
+	GetHandleVerifier [0x00007FF78A34DA22+3621858]
+	GetHandleVerifier [0x00007FF78A3424D3+3575443]
+	GetHandleVerifier [0x00007FF78A0AB77A+860474]
+	(No symbol) [0x00007FF789F5088F]
+	(No symbol) [0x00007FF789F4CBC4]
+	(No symbol) [0x00007FF789F4CD66]
+	(No symbol) [0x00007FF789F3C2C9]
+	BaseThreadInitThunk [0x00007FF98514E8D7+23]
+	RtlUserThreadStart [0x00007FF98667BF6C+44]
+</msg>
+<msg time="2025-03-12T11:17:52.074336" level="FAIL">WebDriverException: Message: target frame detached
+  (failed to check if window was closed: disconnected: Unable to receive message from renderer)
+  (Session info: chrome=134.0.6998.36)
+Stacktrace:
+	GetHandleVerifier [0x00007FF789FDFE45+26629]
+	(No symbol) [0x00007FF789F46010]
+	(No symbol) [0x00007FF789DD914C]
+	(No symbol) [0x00007FF789DC62BB]
+	(No symbol) [0x00007FF789DC516E]
+	(No symbol) [0x00007FF789DE9E04]
+	(No symbol) [0x00007FF789E5F85F]
+	(No symbol) [0x00007FF789E7FA55]
+	(No symbol) [0x00007FF789E57883]
+	(No symbol) [0x00007FF789E20550]
+	(No symbol) [0x00007FF789E21803]
+	GetHandleVerifier [0x00007FF78A3372BD+3529853]
+	GetHandleVerifier [0x00007FF78A34DA22+3621858]
+	GetHandleVerifier [0x00007FF78A3424D3+3575443]
+	GetHandleVerifier [0x00007FF78A0AB77A+860474]
+	(No symbol) [0x00007FF789F5088F]
+	(No symbol) [0x00007FF789F4CBC4]
+	(No symbol) [0x00007FF789F4CD66]
+	(No symbol) [0x00007FF789F3C2C9]
+	BaseThreadInitThunk [0x00007FF98514E8D7+23]
+	RtlUserThreadStart [0x00007FF98667BF6C+44]
+</msg>
+<arg>https://front.serverest.dev/home</arg>
+<arg>timeout=10s</arg>
+<doc>Waits until the current URL is ``expected``.</doc>
+<status status="FAIL" start="2025-03-12T11:17:44.427388" elapsed="7.650948">WebDriverException: Message: target frame detached
+  (failed to check if window was closed: disconnected: Unable to receive message from renderer)
+  (Session info: chrome=134.0.6998.36)
+Stacktrace:
+	GetHandleVerifier [0x00007FF789FDFE45+26629]
+	(No symbol) [0x00007FF789F46010]
+	(No symbol) [0x00007FF789DD914C]
+	(No symbol) [0x00007FF789DC62BB]
+	(No symbol) [0x00007FF789DC516E]
+	(No symbol) [0x00007FF789DE9E04]
+	(No symbol) [0x00007FF789E5F85F]
+	(No symbol) [0x00007FF789E7FA55]
+	(No symbol) [0x00007FF789E57883]
+	(No symbol) [0x00007FF789E20550]
+	(No symbol) [0x00007FF789E21803]
+	GetHandleVerifier [0x00007FF78A3372BD+3529853]
+	GetHandleVerifier [0x00007FF78A34DA22+3621858]
+	GetHandleVerifier [0x00007FF78A3424D3+3575443]
+	GetHandleVerifier [0x00007FF78A0AB77A+860474]
+	(No symbol) [0x00007FF789F5088F]
+	(No symbol) [0x00007FF789F4CBC4]
+	(No symbol) [0x00007FF789F4CD66]
+	(No symbol) [0x00007FF789F3C2C9]
+	BaseThreadInitThunk [0x00007FF98514E8D7+23]
+	RtlUserThreadStart [0x00007FF98667BF6C+44]
+</status>
+</kw>
+<kw name="Get Location" owner="SeleniumLibrary">
+<var>${url_atual}</var>
+<doc>Returns the current browser window URL.</doc>
+<status status="NOT RUN" start="2025-03-12T11:17:52.078336" elapsed="0.000999"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${url_atual}</arg>
+<arg>https://front.serverest.dev/home</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="NOT RUN" start="2025-03-12T11:17:52.079335" elapsed="0.000000"/>
+</kw>
+<status status="FAIL" start="2025-03-12T11:17:44.427388" elapsed="7.651947">WebDriverException: Message: target frame detached
+  (failed to check if window was closed: disconnected: Unable to receive message from renderer)
+  (Session info: chrome=134.0.6998.36)
+Stacktrace:
+	GetHandleVerifier [0x00007FF789FDFE45+26629]
+	(No symbol) [0x00007FF789F46010]
+	(No symbol) [0x00007FF789DD914C]
+	(No symbol) [0x00007FF789DC62BB]
+	(No symbol) [0x00007FF789DC516E]
+	(No symbol) [0x00007FF789DE9E04]
+	(No symbol) [0x00007FF789E5F85F]
+	(No symbol) [0x00007FF789E7FA55]
+	(No symbol) [0x00007FF789E57883]
+	(No symbol) [0x00007FF789E20550]
+	(No symbol) [0x00007FF789E21803]
+	GetHandleVerifier [0x00007FF78A3372BD+3529853]
+	GetHandleVerifier [0x00007FF78A34DA22+3621858]
+	GetHandleVerifier [0x00007FF78A3424D3+3575443]
+	GetHandleVerifier [0x00007FF78A0AB77A+860474]
+	(No symbol) [0x00007FF789F5088F]
+	(No symbol) [0x00007FF789F4CBC4]
+	(No symbol) [0x00007FF789F4CD66]
+	(No symbol) [0x00007FF789F3C2C9]
+	BaseThreadInitThunk [0x00007FF98514E8D7+23]
+	RtlUserThreadStart [0x00007FF98667BF6C+44]
+</status>
+</kw>
+<tag>auth</tag>
+<tag>smoke</tag>
+<status status="FAIL" start="2025-03-12T11:17:39.101210" elapsed="12.980127">WebDriverException: Message: target frame detached
+  (failed to check if window was closed: disconnected: Unable to receive message from renderer)
+  (Session info: chrome=134.0.6998.36)
+Stacktrace:
+	GetHandleVerifier [0x00007FF789FDFE45+26629]
+	(No symbol) [0x00007FF789F46010]
+	(No symbol) [0x00007FF789DD914C]
+	(No symbol) [0x00007FF789DC62BB]
+	(No symbol) [0x00007FF789DC516E]
+	(No symbol) [0x00007FF789DE9E04]
+	(No symbol) [0x00007FF789E5F85F]
+	(No symbol) [0x00007FF789E7FA55]
+	(No symbol) [0x00007FF789E57883]
+	(No symbol) [0x00007FF789E20550]
+	(No symbol) [0x00007FF789E21803]
+	GetHandleVerifier [0x00007FF78A3372BD+3529853]
+	GetHandleVerifier [0x00007FF78A34DA22+3621858]
+	GetHandleVerifier [0x00007FF78A3424D3+3575443]
+	GetHandleVerifier [0x00007FF78A0AB77A+860474]
+	(No symbol) [0x00007FF789F5088F]
+	(No symbol) [0x00007FF789F4CBC4]
+	(No symbol) [0x00007FF789F4CD66]
+	(No symbol) [0x00007FF789F3C2C9]
+	BaseThreadInitThunk [0x00007FF98514E8D7+23]
+	RtlUserThreadStart [0x00007FF98667BF6C+44]
+</status>
 </test>
-<status status="FAIL" start="2025-03-12T09:26:09.047556" elapsed="0.031436"/>
+<status status="FAIL" start="2025-03-12T11:17:38.456131" elapsed="13.627712"/>
 </suite>
 <statistics>
 <total>
 <stat pass="0" fail="1" skip="0">All Tests</stat>
 </total>
 <tag>
+<stat pass="0" fail="1" skip="0">auth</stat>
+<stat pass="0" fail="1" skip="0">smoke</stat>
 </tag>
 <suite>
-<stat name="Test Suite" id="s1" pass="0" fail="1" skip="0">Test Suite</stat>
+<stat name="Login" id="s1" pass="0" fail="1" skip="0">Login</stat>
 </suite>
 </statistics>
 <errors>
-<msg time="2025-03-12T09:26:09.069595" level="ERROR">Error in file 'c:\Users\User\Desktop\ProjetosEstudos\Robot_Servrest_web\projeto-automacao\tests\test_suite.robot' on line 2: Error in file 'c:\Users\User\Desktop\ProjetosEstudos\Robot_Servrest_web\projeto-automacao\tests\features\cadastro.robot' on line 5: Resource file with 'Test Cases' section is invalid.</msg>
-<msg time="2025-03-12T09:26:09.071992" level="ERROR">Error in file 'c:\Users\User\Desktop\ProjetosEstudos\Robot_Servrest_web\projeto-automacao\tests\test_suite.robot' on line 3: Error in file 'c:\Users\User\Desktop\ProjetosEstudos\Robot_Servrest_web\projeto-automacao\tests\features\login.robot' on line 5: Resource file with 'Test Cases' section is invalid.</msg>
+<msg time="2025-03-12T11:17:52.073328" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: Message: invalid session id: session deleted as the browser has closed the connection
+from disconnected: not connected to DevTools
+  (Session info: chrome=134.0.6998.36)
+Stacktrace:
+	GetHandleVerifier [0x00007FF789FDFE45+26629]
+	(No symbol) [0x00007FF789F46010]
+	(No symbol) [0x00007FF789DD931A]
+	(No symbol) [0x00007FF789DC4F65]
+	(No symbol) [0x00007FF789DE9E04]
+	(No symbol) [0x00007FF789E5F85F]
+	(No symbol) [0x00007FF789E7FA55]
+	(No symbol) [0x00007FF789E57883]
+	(No symbol) [0x00007FF789E20550]
+	(No symbol) [0x00007FF789E21803]
+	GetHandleVerifier [0x00007FF78A3372BD+3529853]
+	GetHandleVerifier [0x00007FF78A34DA22+3621858]
+	GetHandleVerifier [0x00007FF78A3424D3+3575443]
+	GetHandleVerifier [0x00007FF78A0AB77A+860474]
+	(No symbol) [0x00007FF789F5088F]
+	(No symbol) [0x00007FF789F4CBC4]
+	(No symbol) [0x00007FF789F4CD66]
+	(No symbol) [0x00007FF789F3C2C9]
+	BaseThreadInitThunk [0x00007FF98514E8D7+23]
+	RtlUserThreadStart [0x00007FF98667BF6C+44]
+</msg>
 </errors>
 </robot>
