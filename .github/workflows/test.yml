@@ -15,7 +15,7 @@ jobs:
     steps:
     - name: Check out repository
       uses: actions/checkout@v3
-      
+
     - name: Set up Python
       uses: actions/setup-python@v4
       with:
@@ -31,8 +31,9 @@ jobs:
 
     - name: Add Python and Scripts to PATH
       run: |
-        $env:PATH = "$env:PATH;C:\Program Files\Python39;C:\Program Files\Python39\Scripts"
-
+        echo "C:\Program Files\Python39;C:\Program Files\Python39\Scripts" >> $env:PATH
+        echo "Python and Scripts directories added to PATH"
+    
     - name: Set up ChromeDriver
       run: |
         choco install chromedriver -y
