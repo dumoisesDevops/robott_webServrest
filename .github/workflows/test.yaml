@@ -23,6 +23,13 @@ jobs:
 
       - name: Install dependencies
         run: |
+          sudo apt-get update
+          sudo apt-get install -y wget curl unzip
+          sudo apt-get install -y libx11-dev libgdk-pixbuf2.0-dev libgtk-3-0 libdbus-1-3
+          sudo apt-get install -y libasound2 libatk1.0-0 libatk-bridge2.0-0 libnss3 libxss1 libxtst6 libappindicator3-1
+          sudo apt-get install -y fonts-liberation libappindicator3-1 libu2f-udev
+          sudo apt-get install -y chromium-browser
+          
           python -m pip install --upgrade pip
           pip install robotframework
           pip install robotframework-seleniumlibrary
@@ -40,7 +47,8 @@ jobs:
 
       - name: Run Robot Framework Tests
         run: |
-          robot --variable BROWSER:Chrome --variable HEADLESS_MODE:"--headless" -d results projeto-automacao/tests/features/  
+          robot --variable BROWSER:Chrome --variable HEADLESS_MODE:"--headless" -d results projeto-automacao/tests/features/  # Ajuste o caminho se necessário
+
       - name: Upload results
         uses: actions/upload-artifact@v4
         with:
