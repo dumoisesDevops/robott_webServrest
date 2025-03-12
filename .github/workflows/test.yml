@@ -29,6 +29,10 @@ jobs:
         pip install pytest
         pip install pytest-xdist
 
+    - name: Add Python and Scripts to PATH
+      run: |
+        $env:PATH = "$env:PATH;C:\Program Files\Python39;C:\Program Files\Python39\Scripts"
+
     - name: Set up ChromeDriver
       run: |
         choco install chromedriver -y
