@@ -35,7 +35,7 @@ jobs:
 
       - name: Check Google Chrome version
         run: |
-          "C:\Program Files\Google\Chrome\Application\chrome.exe" --version  # Verifica a versão do Chrome instalado
+          & "C:\Program Files\Google\Chrome\Application\chrome.exe" --version  # Verifica a versão do Chrome instalado
 
       - name: Check ChromeDriver version
         run: |
