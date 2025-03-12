@@ -1,40 +1,55 @@
-name: Run Robot Framework and Behave Tests
+name: Robot Framework Tests
 
 on:
   push:
     branches:
       - main
   pull_request:
-    branches:
-      - main
 
 jobs:
   test:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
+      - name: 📥 Checkout do código
+        uses: actions/checkout@v4
 
-      - name: Set up Python
+      - name: 📂 Listar arquivos no workspace (debug)
+        run: ls -R
+
+      - name: 📌 Confirmar diretório atual
+        run: pwd
+
+      - name: 📌 Instalar Python e dependências
         uses: actions/setup-python@v4
         with:
-          python-version: '3.9'
+          python-version: '3.10'
 
-      - name: Install dependencies
+      - name: 📦 Instalar dependências do Robot Framework
         run: |
-          pip install robotframework==7.1.1 robotframework-faker requests pytest robotframework-pabot robotframework-yamllibrary pyyaml robotframework-retryfailed pyodbc robotframework-datetime-tz robotframework-seleniumlibrary
+          pip install robotframework
+          pip install robotframework-seleniumlibrary
+          pip install robotframework-faker
+          pip install selenium
 
-      - name: Run Robot Framework tests
+      - name: 🖥️ Instalar Google Chrome e ChromeDriver
         run: |
-          robot --outputdir results features/
+          sudo apt update
+          sudo apt install -y google-chrome-stable
+          CHROME_VERSION=$(google-chrome --version | awk '{print $3}')
+          CHROMEDRIVER_VERSION=$(curl -s "https://chromedriver.storage.googleapis.com/LATEST_RELEASE_$CHROME_VERSION")
+          wget -q "https://chromedriver.storage.googleapis.com/$CHROMEDRIVER_VERSION/chromedriver_linux64.zip"
+          unzip chromedriver_linux64.zip
+          sudo mv chromedriver /usr/local/bin/
+          chromedriver --version
 
-      - name: Run Behave BDD tests
+      - name: 🚀 Executar testes com Robot Framework
         run: |
-          behave features/
+          cd projeto-automacao/tests && robot --outputdir results features/
 
-      - name: Upload test reports as artifacts
+      - name: 📤 Upload dos resultados
+        if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: test-reports
-          path: results/
+          name: relatorios_robot
+          path: projeto-automacao/tests/results/
