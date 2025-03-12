@@ -31,11 +31,11 @@ jobs:
 
     - name: Set up ChromeDriver
       run: |
-        choco install chromedriver
+        choco install chromedriver -y
 
     - name: Add chromedriver to PATH
       run: |
-        echo "C:\ProgramData\chocolatey\bin" >> $env:PATH
+        setx PATH "$env:PATH;C:\ProgramData\chocolatey\bin"
 
   run_tests:
     needs: setup
