@@ -1,0 +1,452 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.0 (Python 3.12.1 on win32)" generated="2025-03-12T09:34:03.440552" rpa="false" schemaversion="5">
+<suite id="s1" name="Features" source="C:\Users\User\Desktop\ProjetosEstudos\Robot_Servrest_web\projeto-automacao\tests\features">
+<suite id="s1-s1" name="Cadastro" source="C:\Users\User\Desktop\ProjetosEstudos\Robot_Servrest_web\projeto-automacao\tests\features\cadastro.robot">
+<test id="s1-s1-t1" name="CT-01 - Validar cadastro novo usuario" line="7">
+<kw name="Dado acesso a pagina de cadastro" owner="cadastro">
+<kw name="Dado que estou na página inicial" owner="globalKeywords">
+<try>
+<branch type="TRY">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2025-03-12T09:34:04.123819" level="INFO">Opening browser 'Chrome' to base url 'https://front.serverest.dev/login'.</msg>
+<arg>${URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2025-03-12T09:34:04.123819" elapsed="4.084820"/>
+</kw>
+<status status="PASS" start="2025-03-12T09:34:04.122819" elapsed="4.086822"/>
+</branch>
+<branch type="EXCEPT">
+<kw name="Log To Console" owner="BuiltIn">
+<arg>elemento não localizado</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="NOT RUN" start="2025-03-12T09:34:08.209641" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-03-12T09:34:08.209641" elapsed="0.000000"/>
+</branch>
+<status status="PASS" start="2025-03-12T09:34:04.122819" elapsed="4.086822"/>
+</try>
+<status status="PASS" start="2025-03-12T09:34:04.122819" elapsed="4.086822"/>
+</kw>
+<kw name="Clicar no botão" owner="globalKeywords">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${ELEMENTO}</arg>
+<arg>${TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-03-12T09:34:08.209641" elapsed="0.023586"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-03-12T09:34:08.233227" level="INFO">Clicking element 'xpath=//a[text()='Cadastre-se']'.</msg>
+<arg>${ELEMENTO}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-03-12T09:34:08.233227" elapsed="0.165641"/>
+</kw>
+<arg>${ENTRAR_CADASTRE_SE}</arg>
+<status status="PASS" start="2025-03-12T09:34:08.209641" elapsed="0.189227"/>
+</kw>
+<status status="PASS" start="2025-03-12T09:34:04.122819" elapsed="4.276049"/>
+</kw>
+<kw name="Quando preencho formulario com dados validos" owner="cadastro">
+<kw name="Gerar Usuario" owner="usuarios">
+<msg time="2025-03-12T09:34:08.401382" level="INFO">${usuario} = {'nome': 'Robin Smith', 'email': 'antonio51@example.org', 'senha': 'M7LmgzIT)1Ec'}</msg>
+<var>${usuario}</var>
+<doc>Gera um novo usuário e adiciona ao JSON sem apagar os anteriores.</doc>
+<status status="PASS" start="2025-03-12T09:34:08.399868" elapsed="0.001514"/>
+</kw>
+<kw name="Inserir texto" owner="globalKeywords">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${ELEMENTO}</arg>
+<arg>${TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-03-12T09:34:08.402385" elapsed="0.020667"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-03-12T09:34:08.424049" level="INFO">Typing text 'Robin Smith' into text field 'id=nome'.</msg>
+<arg>${ELEMENTO}</arg>
+<arg>${TEXTO}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-03-12T09:34:08.423052" elapsed="0.081036"/>
+</kw>
+<arg>${INPUT_NOME}</arg>
+<arg>${usuario}[nome]</arg>
+<status status="PASS" start="2025-03-12T09:34:08.402385" elapsed="0.101703"/>
+</kw>
+<kw name="Inserir texto" owner="globalKeywords">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${ELEMENTO}</arg>
+<arg>${TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-03-12T09:34:08.505086" elapsed="0.015510"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-03-12T09:34:08.520596" level="INFO">Typing text 'antonio51@example.org' into text field 'id=email'.</msg>
+<arg>${ELEMENTO}</arg>
+<arg>${TEXTO}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-03-12T09:34:08.520596" elapsed="0.086544"/>
+</kw>
+<arg>${INPUT_EMAIL}</arg>
+<arg>${usuario}[email]</arg>
+<status status="PASS" start="2025-03-12T09:34:08.504088" elapsed="0.103052"/>
+</kw>
+<kw name="Inserir texto" owner="globalKeywords">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${ELEMENTO}</arg>
+<arg>${TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-03-12T09:34:08.607140" elapsed="0.013511"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-03-12T09:34:08.621716" level="INFO">Typing text 'M7LmgzIT)1Ec' into text field 'id=password'.</msg>
+<arg>${ELEMENTO}</arg>
+<arg>${TEXTO}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-03-12T09:34:08.620651" elapsed="0.056510"/>
+</kw>
+<arg>${INPUT_PASSWORD}</arg>
+<arg>${usuario}[senha]</arg>
+<status status="PASS" start="2025-03-12T09:34:08.607140" elapsed="0.070021"/>
+</kw>
+<kw name="Clicar no botão" owner="globalKeywords">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${ELEMENTO}</arg>
+<arg>${TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-03-12T09:34:08.678160" elapsed="0.014019"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-03-12T09:34:08.692179" level="INFO">Clicking element 'xpath=//button[text()='Cadastrar']'.</msg>
+<arg>${ELEMENTO}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-03-12T09:34:08.692179" elapsed="0.042565"/>
+</kw>
+<arg>${BOTAO_CADASTRAR}</arg>
+<status status="PASS" start="2025-03-12T09:34:08.677161" elapsed="0.057583"/>
+</kw>
+<status status="PASS" start="2025-03-12T09:34:08.399868" elapsed="0.334876"/>
+</kw>
+<kw name="Então cadastro e realizado com sucesso" owner="cadastro">
+<kw name="Wait Until Location Is" owner="SeleniumLibrary">
+<arg>https://front.serverest.dev/home</arg>
+<arg>timeout=10s</arg>
+<doc>Waits until the current URL is ``expected``.</doc>
+<status status="PASS" start="2025-03-12T09:34:08.735743" elapsed="3.809505"/>
+</kw>
+<kw name="Get Location" owner="SeleniumLibrary">
+<msg time="2025-03-12T09:34:12.548250" level="INFO">${url_atual} = https://front.serverest.dev/home</msg>
+<var>${url_atual}</var>
+<doc>Returns the current browser window URL.</doc>
+<status status="PASS" start="2025-03-12T09:34:12.545248" elapsed="0.003002"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${url_atual}</arg>
+<arg>https://front.serverest.dev/home</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2025-03-12T09:34:12.548250" elapsed="0.000998"/>
+</kw>
+<status status="PASS" start="2025-03-12T09:34:08.734744" elapsed="3.814504"/>
+</kw>
+<status status="PASS" start="2025-03-12T09:34:04.121819" elapsed="8.427429"/>
+</test>
+<test id="s1-s1-t2" name="CT-02 - Validar cadastro novo usuario como admin" line="12">
+<kw name="Dado acesso a pagina de cadastro" owner="cadastro">
+<kw name="Dado que estou na página inicial" owner="globalKeywords">
+<try>
+<branch type="TRY">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2025-03-12T09:34:12.550754" level="INFO">Opening browser 'Chrome' to base url 'https://front.serverest.dev/login'.</msg>
+<arg>${URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2025-03-12T09:34:12.550754" elapsed="3.746894"/>
+</kw>
+<status status="PASS" start="2025-03-12T09:34:12.550754" elapsed="3.746894"/>
+</branch>
+<branch type="EXCEPT">
+<kw name="Log To Console" owner="BuiltIn">
+<arg>elemento não localizado</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="NOT RUN" start="2025-03-12T09:34:16.298647" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-03-12T09:34:16.297648" elapsed="0.000999"/>
+</branch>
+<status status="PASS" start="2025-03-12T09:34:12.550754" elapsed="3.747893"/>
+</try>
+<status status="PASS" start="2025-03-12T09:34:12.550754" elapsed="3.747893"/>
+</kw>
+<kw name="Clicar no botão" owner="globalKeywords">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${ELEMENTO}</arg>
+<arg>${TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-03-12T09:34:16.298647" elapsed="0.026340"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-03-12T09:34:16.324987" level="INFO">Clicking element 'xpath=//a[text()='Cadastre-se']'.</msg>
+<arg>${ELEMENTO}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-03-12T09:34:16.324987" elapsed="0.168694"/>
+</kw>
+<arg>${ENTRAR_CADASTRE_SE}</arg>
+<status status="PASS" start="2025-03-12T09:34:16.298647" elapsed="0.195034"/>
+</kw>
+<status status="PASS" start="2025-03-12T09:34:12.549248" elapsed="3.944433"/>
+</kw>
+<kw name="Quando preencho formulario com dados validos como admin" owner="cadastro">
+<kw name="Clicar no botão" owner="globalKeywords">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${ELEMENTO}</arg>
+<arg>${TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-03-12T09:34:16.494648" elapsed="0.019654"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-03-12T09:34:16.514302" level="INFO">Clicking element 'xpath=//label[text()='Cadastrar como administrador?']'.</msg>
+<arg>${ELEMENTO}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-03-12T09:34:16.514302" elapsed="0.042088"/>
+</kw>
+<arg>${CHECKBOX_ADMINISTRADOR}</arg>
+<status status="PASS" start="2025-03-12T09:34:16.494648" elapsed="0.061742"/>
+</kw>
+<kw name="Quando preencho formulario com dados validos" owner="cadastro">
+<kw name="Gerar Usuario" owner="usuarios">
+<msg time="2025-03-12T09:34:16.558388" level="INFO">${usuario} = {'nome': 'Amy Gomez', 'email': 'agreen@example.com', 'senha': '2@5rAzq2&amp;G%&amp;'}</msg>
+<var>${usuario}</var>
+<doc>Gera um novo usuário e adiciona ao JSON sem apagar os anteriores.</doc>
+<status status="PASS" start="2025-03-12T09:34:16.556390" elapsed="0.001998"/>
+</kw>
+<kw name="Inserir texto" owner="globalKeywords">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${ELEMENTO}</arg>
+<arg>${TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-03-12T09:34:16.558893" elapsed="0.015035"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-03-12T09:34:16.573928" level="INFO">Typing text 'Amy Gomez' into text field 'id=nome'.</msg>
+<arg>${ELEMENTO}</arg>
+<arg>${TEXTO}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-03-12T09:34:16.573928" elapsed="0.080246"/>
+</kw>
+<arg>${INPUT_NOME}</arg>
+<arg>${usuario}[nome]</arg>
+<status status="PASS" start="2025-03-12T09:34:16.558388" elapsed="0.095786"/>
+</kw>
+<kw name="Inserir texto" owner="globalKeywords">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${ELEMENTO}</arg>
+<arg>${TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-03-12T09:34:16.655141" elapsed="0.015508"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-03-12T09:34:16.670649" level="INFO">Typing text 'agreen@example.com' into text field 'id=email'.</msg>
+<arg>${ELEMENTO}</arg>
+<arg>${TEXTO}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-03-12T09:34:16.670649" elapsed="0.082702"/>
+</kw>
+<arg>${INPUT_EMAIL}</arg>
+<arg>${usuario}[email]</arg>
+<status status="PASS" start="2025-03-12T09:34:16.655141" elapsed="0.098210"/>
+</kw>
+<kw name="Inserir texto" owner="globalKeywords">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${ELEMENTO}</arg>
+<arg>${TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-03-12T09:34:16.754346" elapsed="0.018059"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-03-12T09:34:16.773410" level="INFO">Typing text '2@5rAzq2&amp;G%&amp;' into text field 'id=password'.</msg>
+<arg>${ELEMENTO}</arg>
+<arg>${TEXTO}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-03-12T09:34:16.772405" elapsed="0.073582"/>
+</kw>
+<arg>${INPUT_PASSWORD}</arg>
+<arg>${usuario}[senha]</arg>
+<status status="PASS" start="2025-03-12T09:34:16.753351" elapsed="0.092636"/>
+</kw>
+<kw name="Clicar no botão" owner="globalKeywords">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${ELEMENTO}</arg>
+<arg>${TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-03-12T09:34:16.846987" elapsed="0.014025"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-03-12T09:34:16.862015" level="INFO">Clicking element 'xpath=//button[text()='Cadastrar']'.</msg>
+<arg>${ELEMENTO}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-03-12T09:34:16.861012" elapsed="0.045696"/>
+</kw>
+<arg>${BOTAO_CADASTRAR}</arg>
+<status status="PASS" start="2025-03-12T09:34:16.845987" elapsed="0.060721"/>
+</kw>
+<status status="PASS" start="2025-03-12T09:34:16.556390" elapsed="0.350318"/>
+</kw>
+<status status="PASS" start="2025-03-12T09:34:16.494648" elapsed="0.412060"/>
+</kw>
+<kw name="Então cadastro como admin e realizado com sucesso" owner="cadastro">
+<kw name="Wait Until Location Is" owner="SeleniumLibrary">
+<arg>https://front.serverest.dev/admin/home</arg>
+<arg>timeout=10s</arg>
+<doc>Waits until the current URL is ``expected``.</doc>
+<status status="PASS" start="2025-03-12T09:34:16.907708" elapsed="3.771056"/>
+</kw>
+<kw name="Get Location" owner="SeleniumLibrary">
+<msg time="2025-03-12T09:34:20.682980" level="INFO">${url_atual} = https://front.serverest.dev/admin/home</msg>
+<var>${url_atual}</var>
+<doc>Returns the current browser window URL.</doc>
+<status status="PASS" start="2025-03-12T09:34:20.679763" elapsed="0.003217"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${url_atual}</arg>
+<arg>https://front.serverest.dev/admin/home</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2025-03-12T09:34:20.682980" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2025-03-12T09:34:16.907708" elapsed="3.775272"/>
+</kw>
+<status status="PASS" start="2025-03-12T09:34:12.549248" elapsed="8.133732"/>
+</test>
+<status status="PASS" start="2025-03-12T09:34:03.459832" elapsed="17.224148"/>
+</suite>
+<suite id="s1-s2" name="Login" source="C:\Users\User\Desktop\ProjetosEstudos\Robot_Servrest_web\projeto-automacao\tests\features\login.robot">
+<test id="s1-s2-t1" name="CT-01 - Validar login com usuario valido" line="7">
+<kw name="Dado que estou na página inicial" owner="globalKeywords">
+<try>
+<branch type="TRY">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2025-03-12T09:34:20.697493" level="INFO">Opening browser 'Chrome' to base url 'https://front.serverest.dev/login'.</msg>
+<arg>${URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2025-03-12T09:34:20.697493" elapsed="3.754644"/>
+</kw>
+<status status="PASS" start="2025-03-12T09:34:20.697493" elapsed="3.754644"/>
+</branch>
+<branch type="EXCEPT">
+<kw name="Log To Console" owner="BuiltIn">
+<arg>elemento não localizado</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="NOT RUN" start="2025-03-12T09:34:24.453135" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2025-03-12T09:34:24.452137" elapsed="0.000998"/>
+</branch>
+<status status="PASS" start="2025-03-12T09:34:20.697493" elapsed="3.755642"/>
+</try>
+<status status="PASS" start="2025-03-12T09:34:20.697493" elapsed="3.755642"/>
+</kw>
+<kw name="Quando informo os dados de acesso" owner="login">
+<kw name="Obter Dados Login" owner="obter_usuario">
+<msg time="2025-03-12T09:34:24.455138" level="INFO">${usuario} = harmonmeredith@example.com</msg>
+<msg time="2025-03-12T09:34:24.455138" level="INFO">${senha} = HuwA0BYq@^Q5</msg>
+<var>${usuario}</var>
+<var>${senha}</var>
+<doc>Lê o arquivo JSON e retorna o primeiro usuário como dados de login.</doc>
+<status status="PASS" start="2025-03-12T09:34:24.454137" elapsed="0.001001"/>
+</kw>
+<kw name="Inserir texto" owner="globalKeywords">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${ELEMENTO}</arg>
+<arg>${TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-03-12T09:34:24.455138" elapsed="0.022021"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-03-12T09:34:24.478158" level="INFO">Typing text 'harmonmeredith@example.com' into text field 'id=email'.</msg>
+<arg>${ELEMENTO}</arg>
+<arg>${TEXTO}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-03-12T09:34:24.477159" elapsed="0.204395"/>
+</kw>
+<arg>${INPUT_LOGIN}</arg>
+<arg>${usuario}</arg>
+<status status="PASS" start="2025-03-12T09:34:24.455138" elapsed="0.226416"/>
+</kw>
+<kw name="Inserir texto" owner="globalKeywords">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${ELEMENTO}</arg>
+<arg>${TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-03-12T09:34:24.682553" elapsed="0.018213"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-03-12T09:34:24.701950" level="INFO">Typing text 'HuwA0BYq@^Q5' into text field 'id=password'.</msg>
+<arg>${ELEMENTO}</arg>
+<arg>${TEXTO}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-03-12T09:34:24.700766" elapsed="0.071931"/>
+</kw>
+<arg>${INPUT_PASSWORD}</arg>
+<arg>${senha}</arg>
+<status status="PASS" start="2025-03-12T09:34:24.681554" elapsed="0.091143"/>
+</kw>
+<kw name="Clicar no botão" owner="globalKeywords">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${ELEMENTO}</arg>
+<arg>${TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-03-12T09:34:24.773700" elapsed="0.015503"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-03-12T09:34:24.789203" level="INFO">Clicking element 'xpath=//button[normalize-space(text())='Entrar']'.</msg>
+<arg>${ELEMENTO}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-03-12T09:34:24.789203" elapsed="0.042533"/>
+</kw>
+<arg>${BOTAO_ENTRAR_LOGIN}</arg>
+<status status="PASS" start="2025-03-12T09:34:24.773700" elapsed="0.058036"/>
+</kw>
+<status status="PASS" start="2025-03-12T09:34:24.454137" elapsed="0.377599"/>
+</kw>
+<kw name="Então usuario e logado com sucesso" owner="login">
+<kw name="Wait Until Location Is" owner="SeleniumLibrary">
+<arg>https://front.serverest.dev/home</arg>
+<arg>timeout=10s</arg>
+<doc>Waits until the current URL is ``expected``.</doc>
+<status status="PASS" start="2025-03-12T09:34:24.832735" elapsed="0.883653"/>
+</kw>
+<kw name="Get Location" owner="SeleniumLibrary">
+<msg time="2025-03-12T09:34:25.719398" level="INFO">${url_atual} = https://front.serverest.dev/home</msg>
+<var>${url_atual}</var>
+<doc>Returns the current browser window URL.</doc>
+<status status="PASS" start="2025-03-12T09:34:25.716388" elapsed="0.003010"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${url_atual}</arg>
+<arg>https://front.serverest.dev/home</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2025-03-12T09:34:25.719398" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2025-03-12T09:34:24.832735" elapsed="0.886663"/>
+</kw>
+<tag>auth</tag>
+<tag>smoke</tag>
+<status status="PASS" start="2025-03-12T09:34:20.696491" elapsed="5.022907"/>
+</test>
+<status status="PASS" start="2025-03-12T09:34:20.684982" elapsed="5.035924"/>
+</suite>
+<status status="PASS" start="2025-03-12T09:34:03.440552" elapsed="22.281364"/>
+</suite>
+<statistics>
+<total>
+<stat pass="3" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="1" fail="0" skip="0">auth</stat>
+<stat pass="1" fail="0" skip="0">smoke</stat>
+</tag>
+<suite>
+<stat pass="3" fail="0" skip="0" id="s1" name="Features">Features</stat>
+<stat pass="2" fail="0" skip="0" id="s1-s1" name="Cadastro">Features.Cadastro</stat>
+<stat pass="1" fail="0" skip="0" id="s1-s2" name="Login">Features.Login</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
