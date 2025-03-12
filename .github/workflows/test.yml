@@ -1,0 +1,76 @@
+name: Run Robot Framework Tests in Parallel
+
+on:
+  push:
+    branches:
+      - main  # Rodar em push na branch principal
+  pull_request:
+    branches:
+      - main  # Rodar em pull requests para a branch principal
+
+jobs:
+  setup:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Check out repository
+      uses: actions/checkout@v3
+      
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'  # Ou a versão de Python que você utiliza
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install robotframework selenium
+        pip install robotframework-seleniumlibrary
+        pip install pytest
+        pip install pytest-xdist  # Para paralelismo
+
+    - name: Set up ChromeDriver
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y chromium-chromedriver
+        sudo ln -s /usr/lib/chromium-browser/chromedriver /usr/bin
+
+  run_tests:
+    needs: setup
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Check out repository
+      uses: actions/checkout@v3
+
+    - name: Run Robot Framework Tests in Parallel
+      run: |
+        # Rodando o Robot Framework com Selenium e paralelismo usando pytest-xdist
+        robot --outputdir results tests/ --variable BROWSER:chrome
+        # Utilizando pytest para rodar os testes em paralelo (ajustando com -n para o número de processos)
+        pytest tests/ --maxfail=5 --disable-warnings -n auto  # 'auto' vai detectar o número de núcleos disponíveis
+      env:
+        DISPLAY: :99  # Configurando para rodar testes de interface gráfica (caso necessário)
+
+  upload_results:
+    needs: run_tests
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Upload Robot Framework Results
+      uses: actions/upload-artifact@v3
+      with:
+        name: test-results
+        path: results/  # Caminho para os resultados gerados pelo Robot Framework
+
+  # Optional: Para visualização de logs do ChromeDriver
+  upload_logs:
+    needs: run_tests
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Upload Selenium Logs
+      uses: actions/upload-artifact@v3
+      with:
+        name: selenium-logs
+        path: /tmp/selenium_logs/  # A localização dos logs do Selenium no runner

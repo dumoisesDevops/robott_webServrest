@@ -1,0 +1,14 @@
+# Bibliotecas necessárias para o projeto de automação com Robot Framework
+
+robotframework==7.1.1            # Framework principal de automação
+robotframework-browser           # Biblioteca para automação de navegadores
+robotframework-faker             # Biblioteca para gerar dados falsos
+requests                         # Biblioteca para fazer requisições HTTP (se necessário)
+pytest                           # Biblioteca para testes adicionais
+robotframework-pabot             # Biblioteca para execução dos testes em paralelismo
+robotframework-yamllibrary       # Biblioteca para interagir com arquivos .yaml
+playwright                       # Biblioteca base para a BrowserLibrary
+pyyaml                           # Biblioteca para suporte de arquivos .yaml
+robotframework-retryfailed       # Biblioteca para reexecutar cenários que falharam
+pyodbc                           # Biblioteca para conexão ao banco de dados
+robotframework-datetime-tz       # Biblioteca para manipular datas e horaríos
