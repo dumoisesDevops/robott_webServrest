@@ -1,4 +1,4 @@
-name: Run Robot Framework Tests with Selenium and Chrome
+name: Run Robot Framework Tests with Selenium and Chrome (Windows)
 
 on:
   push:
@@ -10,7 +10,7 @@ on:
 
 jobs:
   run-tests:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest  # Alterado para Windows
 
     steps:
       - name: Checkout repository
@@ -29,15 +29,25 @@ jobs:
           pip install faker
           pip install robotframework-faker
 
-      - name: Check Chrome version
-        run: google-chrome --version
+      - name: Install Google Chrome
+        run: |
+          choco install googlechrome  # Usando o Chocolatey para instalar o Chrome
+
+      - name: Install ChromeDriver
+        run: |
+          choco install chromedriver  # Usando o Chocolatey para instalar o ChromeDriver
+
+      - name: Check Google Chrome version
+        run: |
+          google-chrome --version
 
       - name: Check ChromeDriver version
-        run: chromedriver --version
+        run: |
+          chromedriver --version
 
       - name: List files for debugging
         run: |
-          ls -R  # Verifica a estrutura do repositório para garantir que 'tests/features' existe
+          dir /s  # Verifica a estrutura do repositório para garantir que 'tests/features' existe
 
       - name: Run Robot Framework Tests
         run: |
