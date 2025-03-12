@@ -23,8 +23,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pip install -r requirements.txt
-          pip install robotframework robotframework-faker requests pytest robotframework-pabot robotframework-yamllibrary pyyaml robotframework-retryfailed pyodbc robotframework-datetime-tz robotframework-seleniumlibrary
+          pip install robotframework==7.1.1 robotframework-faker requests pytest robotframework-pabot robotframework-yamllibrary pyyaml robotframework-retryfailed pyodbc robotframework-datetime-tz robotframework-seleniumlibrary
 
       - name: Run Robot Framework tests
         run: |
