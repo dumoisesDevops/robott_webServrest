@@ -28,26 +28,11 @@ jobs:
           pip install robotframework-seleniumlibrary
           pip install faker
 
-      - name: Install Google Chrome and ChromeDriver
+      - name: Install Google Chrome
         run: |
           sudo apt update
           sudo apt install -y google-chrome-stable
-          CHROME_VERSION=$(google-chrome --version | awk '{print $3}')
-          CHROMEDRIVER_VERSION=$(curl -s "https://chromedriver.storage.googleapis.com/LATEST_RELEASE_$CHROME_VERSION")
-          echo "Chrome Version: $CHROME_VERSION"
-          echo "Chromedriver Version: $CHROMEDRIVER_VERSION"
-          
-          # Baixar e extrair o Chromedriver
-          wget -q "https://chromedriver.storage.googleapis.com/$CHROMEDRIVER_VERSION/chromedriver_linux64.zip"
-          unzip -o chromedriver_linux64.zip
-          ls -lh  # Verifica se o chromedriver foi extraído corretamente
-          
-          # Mover o chromedriver para o diretório correto
-          sudo mv chromedriver /usr/local/bin/
-          chmod +x /usr/local/bin/chromedriver  # Garantir permissões corretas
-
-          # Verificar a instalação
-          chromedriver --version
+          google-chrome --version
 
       - name: Run Robot Framework Tests
         run: |
