@@ -27,6 +27,7 @@ jobs:
           pip install robotframework
           pip install robotframework-seleniumlibrary
           pip install faker
+          pip install robotframework-faker  # Instala a FakerLibrary
 
       - name: Install Google Chrome
         run: |
@@ -36,12 +37,12 @@ jobs:
 
       - name: List files for debugging
         run: |
-          ls -R  # Verifica a estrutura do repositório para garantir que o diretório existe
+          ls -R  # Verifica a estrutura do repositório
           ls -R projeto-automacao/tests  # Verifica se o diretório tests/features existe dentro do repositório
 
       - name: Run Robot Framework Tests
         run: |
-          robot -d results projeto-automacao/tests/features/  # Ajuste o caminho se necessário
+          robot -d results projeto-automacao/tests/features/  # Ajuste o caminho conforme necessário
 
       - name: Upload results
         uses: actions/upload-artifact@v4
