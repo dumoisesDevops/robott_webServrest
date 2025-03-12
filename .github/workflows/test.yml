@@ -34,10 +34,14 @@ jobs:
           sudo apt install -y google-chrome-stable
           google-chrome --version
 
+      - name: List files for debugging
+        run: |
+          ls -R  # Verifica a estrutura do repositório para garantir que 'tests/features' existe
+
       - name: Run Robot Framework Tests
         run: |
-          robot --outputdir results features/
-          
+          robot -d results features projeto-automacao/tests/
+
       - name: Upload results
         uses: actions/upload-artifact@v4
         with:

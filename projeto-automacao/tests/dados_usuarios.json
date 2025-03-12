@@ -18,5 +18,15 @@
         "nome": "Amy Gomez",
         "email": "agreen@example.com",
         "senha": "2@5rAzq2&G%&"
+    },
+    {
+        "nome": "Ian Dorsey",
+        "email": "vdavies@example.net",
+        "senha": "X*UkOUVMZm80"
+    },
+    {
+        "nome": "Todd Turner",
+        "email": "dmcguire@example.org",
+        "senha": "DPCsPdTDL!5I"
     }
 ]
