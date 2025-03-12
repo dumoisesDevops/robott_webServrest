@@ -10,7 +10,7 @@ on:
 
 jobs:
   run-tests:
-    runs-on: windows-latest  # Alterado para Windows
+    runs-on: windows-latest  # Usando Windows como sistema operacional
 
     steps:
       - name: Checkout repository
@@ -35,15 +35,15 @@ jobs:
 
       - name: Install Google Chrome
         run: |
-          choco install googlechrome -y  # Usando o Chocolatey para instalar o Chrome
+          choco install googlechrome -y  # Instalando o Google Chrome com o Chocolatey
 
       - name: Install ChromeDriver
         run: |
-          choco install chromedriver -y  # Usando o Chocolatey para instalar o ChromeDriver
+          choco install chromedriver -y  # Instalando o ChromeDriver com o Chocolatey
 
       - name: Check Google Chrome version
         run: |
-          chrome --version  # Usando 'chrome' no lugar de 'google-chrome'
+          "C:\Program Files\Google\Chrome\Application\chrome.exe" --version  # Usando o caminho completo para o Chrome
 
       - name: Check ChromeDriver version
         run: |
