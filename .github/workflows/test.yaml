@@ -29,17 +29,21 @@ jobs:
           pip install faker
           pip install robotframework-faker
 
+      - name: Verify Selenium Installation
+        run: |
+          pip show selenium  # Verifica se o Selenium está instalado
+
       - name: Install Google Chrome
         run: |
-          choco install googlechrome  # Usando o Chocolatey para instalar o Chrome
+          choco install googlechrome -y  # Usando o Chocolatey para instalar o Chrome
 
       - name: Install ChromeDriver
         run: |
-          choco install chromedriver  # Usando o Chocolatey para instalar o ChromeDriver
+          choco install chromedriver -y  # Usando o Chocolatey para instalar o ChromeDriver
 
       - name: Check Google Chrome version
         run: |
-          google-chrome --version
+          chrome --version  # Usando 'chrome' no lugar de 'google-chrome'
 
       - name: Check ChromeDriver version
         run: |
