@@ -1,6 +1,6 @@
 *** Settings ***
 ###PAGES
-Resource               ../pages/login/Login.robot
+Resource               ../pages/login/login.robot
 Resource               ../pages/cadastro/cadastro.robot
 
 
@@ -14,6 +14,7 @@ Library                FakerLibrary
 Library                SeleniumLibrary
 Library                usuarios.py 
 Library                obter_usuario.py
+
 
    
 ###VARIABLES

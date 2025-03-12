@@ -27,27 +27,20 @@ jobs:
           pip install robotframework
           pip install robotframework-seleniumlibrary
           pip install faker
-          pip install robotframework-faker  # Instala a FakerLibrary
-          pip install chromedriver-autoinstaller  # Instala o chromedriver autoinstaller
+          pip install robotframework-faker
+          pip install chromedriver-autoinstaller  # Instala a biblioteca do ChromeDriver
 
-      - name: Install Google Chrome
+      - name: Install ChromeDriver
         run: |
-          sudo apt update
-          sudo apt install -y google-chrome-stable
-          google-chrome --version
-
-      - name: Install chromedriver
-        run: |
-          python -c "import chromedriver_autoinstaller; chromedriver_autoinstaller.install()"  # Instala o chromedriver adequado para a versão do Chrome
+          python setup.py  # Executa o arquivo setup.py para instalar o ChromeDriver
 
       - name: List files for debugging
         run: |
-          ls -R  # Verifica a estrutura do repositório
-          ls -R projeto-automacao/tests  # Verifica se o diretório tests/features existe dentro do repositório
+          ls -R  # Verifica a estrutura do repositório para garantir que 'tests/features' existe
 
       - name: Run Robot Framework Tests
         run: |
-          robot -d results projeto-automacao/tests/features/  # Ajuste o caminho conforme necessário
+          robot -d results projeto-automacao/tests/features/  # Ajuste o caminho se necessário
 
       - name: Upload results
         uses: actions/upload-artifact@v4
