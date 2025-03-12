@@ -23,24 +23,17 @@ jobs:
 
       - name: Install dependencies
         run: |
-          sudo apt-get update
-          sudo apt-get install -y wget curl unzip
-          sudo apt-get install -y libx11-dev libgdk-pixbuf2.0-dev libgtk-3-0 libdbus-1-3
-          sudo apt-get install -y libasound2-dev  # Atualizando para libasound2-dev
-          sudo apt-get install -y libatk1.0-0 libatk-bridge2.0-0 libnss3 libxss1 libxtst6 libappindicator3-1
-          sudo apt-get install -y fonts-liberation libappindicator3-1 libu2f-udev
-          sudo apt-get install -y chromium-browser
-          
           python -m pip install --upgrade pip
           pip install robotframework
           pip install robotframework-seleniumlibrary
           pip install faker
           pip install robotframework-faker
-          pip install chromedriver-autoinstaller
 
-      - name: Install ChromeDriver
-        run: |
-          python setup.py  # Executa o arquivo setup.py para instalar o ChromeDriver
+      - name: Check Chrome version
+        run: google-chrome --version
+
+      - name: Check ChromeDriver version
+        run: chromedriver --version
 
       - name: List files for debugging
         run: |
@@ -48,7 +41,7 @@ jobs:
 
       - name: Run Robot Framework Tests
         run: |
-          robot --variable BROWSER:Chrome --variable HEADLESS_MODE:"--headless" -d results projeto-automacao/tests/features/  # Ajuste o caminho se necessário
+          robot --variable BROWSER:Chrome --variable HEADLESS_MODE:"--headless --no-sandbox --disable-dev-shm-usage" -d results projeto-automacao/tests/features/
 
       - name: Upload results
         uses: actions/upload-artifact@v4
