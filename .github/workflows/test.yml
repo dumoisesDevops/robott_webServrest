@@ -30,9 +30,10 @@ jobs:
         pip install pytest-xdist
 
     - name: Add Python and Scripts to PATH
+      shell: pwsh
       run: |
-        echo "C:\Program Files\Python39;C:\Program Files\Python39\Scripts" >> $env:PATH
-        echo "Python and Scripts directories added to PATH"
+        $env:PATH = "C:\Program Files\Python39\Scripts;C:\Program Files\Python39;$env:PATH"
+        Write-Host "Python and Scripts directories added to PATH"
     
     - name: Set up ChromeDriver
       run: |
