@@ -36,11 +36,12 @@ jobs:
 
       - name: List files for debugging
         run: |
-          ls -R  # Verifica a estrutura do repositório para garantir que 'tests/features' existe
+          ls -R  # Verifica a estrutura do repositório para garantir que o diretório existe
+          ls -R projeto-automacao/tests  # Verifica se o diretório tests/features existe dentro do repositório
 
       - name: Run Robot Framework Tests
         run: |
-          robot -d results features projeto-automacao/tests/
+          robot -d results projeto-automacao/tests/features/  # Ajuste o caminho se necessário
 
       - name: Upload results
         uses: actions/upload-artifact@v4
